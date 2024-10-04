@@ -1,0 +1,142 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgba(15, 11, 11, 0.938);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Fix for body::after */
+}
+
+body::after {
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    background: red;
+    position: absolute;
+    z-index: -1;
+    clip-path: circle(40% at right 70%); /* Moved the circle to the bottom */
+}
+
+.container {
+    background-color: rgba(54, 54, 54, 0.712);
+    height: 80%;
+    width: 80%;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative; /* Ensure proper stacking */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+nav .logo {
+    color: aliceblue;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 32px;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+nav .logo:hover {
+    letter-spacing: 3px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 6px;
+}
+
+nav ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 14px; /* Increased font size for readability */
+    font-weight: 400;
+    transition: 0.5s;
+}
+
+nav ul li a:hover {
+    color: rgba(243, 88, 88, 0.959);
+    letter-spacing: 3px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+.content .text {
+    color: aliceblue;
+    width: 40%;
+    padding: 20px; /* Added padding for better spacing */
+}
+
+.content .text h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px; /* Added margin for better spacing */
+}
+
+.content .text p {
+    font-size: 18px;
+    line-height: 25px;
+    margin: 10px 0;
+    letter-spacing: 1px;
+}
+
+.content .image {
+    width: 40%;
+    display: flex;
+    justify-content: center; /* Centering image horizontally */
+}
+
+.content .image img {
+    max-width: 100%; /* Ensures the image fits within its container */
+    height: auto;
+}
+
+@media (min-width: 950px) and (max-width: 1150px) {
+    .content .image img {
+        width: 330px; /* Corrected width for medium screens */
+    }
+}
+
+@media (max-width: 950px) {
+    .content, nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Ensures items are centered on smaller screens */
+    }
+
+    .content .image, .content .text {
+        width: 80%;
+        margin-bottom: 20px; /* Added margin for better spacing */
+    }
+
+    body::after {
+        clip-path: circle(50% at bottom); /* Keep the circle at the bottom in smaller screens */
+    }
+
+    nav ul li a {
+        font-size: 12px; /* Reduced font size for smaller screens */
+    }
+}
